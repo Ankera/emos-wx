@@ -1,0 +1,1 @@
+<view><text>{{a}}</text><view wx:for="{{b}}" wx:for-item="item" wx:key="b"><view>{{item.a}}</view></view><view bindtap="{{c}}">增加随机字符串</view><view><input type="text" value="{{d}}" bindinput="{{e}}"/></view><view>{{f}}</view></view>
