@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "uni-list-chat": "../../components/uni-list-chat/uni-list-chat",
+    "uni-list": "../../components/uni-list/uni-list"
+  }
+}

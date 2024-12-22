@@ -13,6 +13,11 @@ if (!Math) {
   "./pages/checkin/checkin.js";
   "./pages/checkin_result/checkin_result.js";
   "./pages/my_checkin/my_checkin.js";
+  "./pages/message/message.js";
+  "./pages/message_list/message_list.js";
+  "./pages/meeting/meeting.js";
+  "./pages/members/members.js";
+  "./pages/video_meeting/video_meeting.js";
 }
 const _sfc_main = {
   onLaunch: function() {
@@ -24,6 +29,33 @@ const _sfc_main = {
   onHide: function() {
     console.log("App Hide");
   }
+};
+Date.prototype.format = function(fmt) {
+  var o = {
+    "M+": this.getMonth() + 1,
+    //月份 
+    "d+": this.getDate(),
+    //日 
+    "h+": this.getHours(),
+    //小时 
+    "m+": this.getMinutes(),
+    //分 
+    "s+": this.getSeconds(),
+    //秒 
+    "q+": Math.floor((this.getMonth() + 3) / 3),
+    //季度 
+    "S": this.getMilliseconds()
+    //毫秒 
+  };
+  if (/(y+)/.test(fmt)) {
+    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+  }
+  for (var k in o) {
+    if (new RegExp("(" + k + ")").test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+    }
+  }
+  return fmt;
 };
 function createApp() {
   const app = common_vendor.createSSRApp(_sfc_main);

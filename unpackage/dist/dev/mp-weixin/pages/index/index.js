@@ -1,20 +1,36 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const common_assets = require("../../common/assets.js");
+const utils_request = require("../../utils/request.js");
 if (!Array) {
   const _easycom_uni_calendar2 = common_vendor.resolveComponent("uni-calendar");
-  const _component_uni_popup_message = common_vendor.resolveComponent("uni-popup-message");
-  const _easycom_uni_popup2 = common_vendor.resolveComponent("uni-popup");
-  (_easycom_uni_calendar2 + _component_uni_popup_message + _easycom_uni_popup2)();
+  _easycom_uni_calendar2();
 }
 const _easycom_uni_calendar = () => "../../components/uni-calendar/uni-calendar.js";
-const _easycom_uni_popup = () => "../../components/uni-popup/uni-popup.js";
 if (!Math) {
-  (_easycom_uni_calendar + _easycom_uni_popup)();
+  (_easycom_uni_calendar + uniPopupMessage + uniPopup)();
 }
+const uniPopup = () => "../../components/uni-popup/uni-popup.js";
+const uniPopupMessage = () => "../../components/uni-popup/uni-popup-message.js";
 const _sfc_main = {
   __name: "index",
   setup(__props) {
+    const popupMsg = common_vendor.ref(null);
+    common_vendor.ref(null);
+    const unreadRows = common_vendor.ref(0);
+    const lastRows = common_vendor.ref(0);
+    common_vendor.onMounted(() => {
+      utils_request.request(utils_request.API_URL.refreshMessage, "GET", null, (resp) => {
+        unreadRows.value = resp.data.unreadRows;
+        lastRows.value = resp.data.lastRows;
+        if (resp.data.unreadRows > 0) {
+          popupMsg.value.open();
+        }
+      });
+    });
+    common_vendor.onUnmounted(() => {
+      common_vendor.index.$off("showMessage");
+    });
     const toPage = (name, url) => {
       common_vendor.index.navigateTo({
         url
@@ -23,7 +39,7 @@ const _sfc_main = {
     return (_ctx, _cache) => {
       return {
         a: common_assets._imports_0,
-        b: common_vendor.t(_ctx.unreadRows),
+        b: common_vendor.t(unreadRows.value),
         c: common_assets._imports_1,
         d: common_vendor.o(($event) => toPage("消息提醒", "/pages/message_list/message_list")),
         e: common_assets._imports_2,
@@ -61,10 +77,12 @@ const _sfc_main = {
         x: common_assets._imports_15,
         y: common_vendor.p({
           type: "success",
-          message: "接收到" + _ctx.lastRows + "条消息",
+          message: "接收到" + lastRows.value + "条消息",
           duration: 2e3
         }),
-        z: common_vendor.sr("popupMsg", "3e0e57e2-1"),
+        z: common_vendor.sr(popupMsg, "3e0e57e2-1", {
+          "k": "popupMsg"
+        }),
         A: common_vendor.p({
           type: "top"
         })

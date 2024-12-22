@@ -10,7 +10,12 @@
     "pages/document/document",
     "pages/checkin/checkin",
     "pages/checkin_result/checkin_result",
-    "pages/my_checkin/my_checkin"
+    "pages/my_checkin/my_checkin",
+    "pages/message/message",
+    "pages/message_list/message_list",
+    "pages/meeting/meeting",
+    "pages/members/members",
+    "pages/video_meeting/video_meeting"
   ],
   "window": {
     "navigationBarTextStyle": "white",

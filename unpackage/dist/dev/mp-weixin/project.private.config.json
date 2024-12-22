@@ -8,6 +8,27 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/members/members",
+          "pathName": "pages/members/members",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/meeting_list/meeting_list",
+          "pathName": "pages/meeting_list/meeting_list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/message_list/message_list",
+          "pathName": "pages/message_list/message_list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/my_checkin/my_checkin",
           "pathName": "pages/my_checkin/my_checkin",
           "query": "",

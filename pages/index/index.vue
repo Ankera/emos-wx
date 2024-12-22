@@ -111,7 +111,29 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import uniPopup from "@/components/uni-popup/uni-popup.vue"
+import uniPopupMessage from "@/components/uni-popup/uni-popup-message.vue";
+import { API_URL, request } from "@/utils/request.js";
+import { ref, onMounted, onUnmounted } from "vue";
+const popupMsg = ref(null);
+const timer = ref(null);
+const unreadRows = ref(0);
+const lastRows = ref(0)
+
+onMounted(() => {
+	request(API_URL.refreshMessage, "GET", null, (resp) => {
+		unreadRows.value = resp.data.unreadRows;
+		lastRows.value = resp.data.lastRows;
+		// uni.$emit("showMessage");
+		if (resp.data.unreadRows > 0) {
+			popupMsg.value.open();
+		}
+	})
+}) 
+
+onUnmounted(() => {
+	uni.$off("showMessage")
+})
 
 const toPage = (name, url) => {
 	let flag=false;

@@ -40,8 +40,8 @@ const _sfc_main = {
         b: common_vendor.t(name.value),
         c: common_vendor.t(deptName.value == null ? "" : deptName.value),
         d: common_vendor.t(date.value),
-        e: common_assets._imports_0$4,
-        f: common_assets._imports_0$4,
+        e: common_assets._imports_0$5,
+        f: common_assets._imports_0$5,
         g: common_vendor.t(attendanceTime.value),
         h: common_vendor.t(checkinTime.value),
         i: status.value == "正常"
@@ -52,7 +52,7 @@ const _sfc_main = {
       }, status.value == "迟到" ? {
         l: common_vendor.t(status.value)
       } : {}, {
-        m: common_assets._imports_1$1,
+        m: common_assets._imports_1$2,
         n: common_vendor.t(address.value),
         o: risk.value == "低风险"
       }, risk.value == "低风险" ? {
@@ -66,19 +66,19 @@ const _sfc_main = {
       }, risk.value == "高风险" ? {
         t: common_vendor.t(risk.value)
       } : {}, {
-        v: common_assets._imports_2$1,
+        v: common_assets._imports_2$2,
         w: common_vendor.t(closingTime.value),
-        x: common_assets._imports_0$3,
+        x: common_assets._imports_0$4,
         y: common_vendor.t(checkinDays.value),
         z: common_vendor.f(weekCheckin.value, (one, k0, i0) => {
           return common_vendor.e({
             a: one.type == "工作日"
           }, one.type == "工作日" ? {
-            b: common_assets._imports_4$1
+            b: common_assets._imports_4$2
           } : {}, {
             c: one.type == "节假日"
           }, one.type == "节假日" ? {
-            d: common_assets._imports_5$1
+            d: common_assets._imports_5$2
           } : {}, {
             e: common_vendor.t(one.day),
             f: one.status == "正常"
